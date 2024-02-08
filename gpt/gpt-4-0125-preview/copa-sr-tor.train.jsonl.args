@@ -1,0 +1,6 @@
+{
+    "input": "../dialect-copa/copa-sr-tor/train.jsonl",
+    "output": "copa-sr-tor.train.jsonl",
+    "model": "gpt-4-0125-preview",
+    "sleep": 2
+}
