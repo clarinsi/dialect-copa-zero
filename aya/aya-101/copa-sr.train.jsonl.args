@@ -1,0 +1,6 @@
+{
+    "input": "../dialect-copa/copa-sr/train.jsonl",
+    "output": "copa-sr.train.jsonl",
+    "model": "aya-101",
+    "sleep": "0"
+}
