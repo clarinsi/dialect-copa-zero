@@ -1,0 +1,6 @@
+{
+    "input": "../dialect-copa/copa-sl-cer/train.jsonl",
+    "output": "copa-sl-cer.train.jsonl",
+    "model": "Mistral-7B-Instruct-v0.1",
+    "sleep": "0"
+}
