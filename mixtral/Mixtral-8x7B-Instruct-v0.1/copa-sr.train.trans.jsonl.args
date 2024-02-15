@@ -1,0 +1,6 @@
+{
+    "input": "../dialect-copa/copa-sr/train.trans.jsonl",
+    "output": "copa-sr.train.trans.jsonl",
+    "model": "Mixtral-8x7B-Instruct-v0.1",
+    "sleep": "0"
+}
