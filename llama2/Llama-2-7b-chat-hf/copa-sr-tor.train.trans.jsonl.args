@@ -1,0 +1,6 @@
+{
+    "input": "../dialect-copa/copa-sr-tor/train.trans.jsonl",
+    "output": "copa-sr-tor.train.trans.jsonl",
+    "model": "Llama-2-7b-chat-hf",
+    "sleep": "0"
+}

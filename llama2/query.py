@@ -47,7 +47,7 @@ for line in open(args.input):
     prompt=construct_prompt(entry)#.replace(', but the task itself is in another language','')
     print(prompt)
     response = pipeline(
-    '<s>[INST] '+prompt+ '[/INST]',
+    '<s>[INST] '+prompt+ ' [/INST]',
     #do_sample=False,
     #top_k=1,
     #num_return_sequences=1,
