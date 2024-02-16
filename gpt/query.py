@@ -3,7 +3,7 @@ import argparse
 from openai import OpenAI
 import os
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key=open('key.txt').read())
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input')
 parser.add_argument('-o', '--output')
