@@ -1,6 +1,8 @@
 # dialect-copa-zero
 
-Current results on the train section of the data by zero-shotting with the following prompt (example in Croatian):
+## Zero-shot
+
+Results on the train section of the data by zero-shotting with the following prompt (example in Croatian):
 
 ```
 You will be given a task. The task definition is in English, but the task itself is in another language. Here is the task!
@@ -38,3 +40,53 @@ Lack of clear response by model and dataset is the following.
 | mistral/Mistral-7B-Instruct-v0.2 | 0.028 | 0.05 | 0.072 | 0.14 | 0.42 | 0.052 | 0.065 | 0.07 | 0.035 | 0.043 |
 | mistral/Mixtral-8x7B-Instruct-v0.1 | 0.018 | 0.01 | 0.013 | 0.028 | 0.122 | 0.01 | 0.013 | 0.02 | 0.015 | 0.015 |
 | tiiuae/falcon-7b-instruct | 0.02 | 0.052 | 0.3 | 0.033 | 0.072 | 0.05 | 0.18 | 0.035 | 0.172 | 0.075 |
+
+## Few-shot
+
+Results on the train section of the data, on models where improvement is observed when 4-shotting with the following prompt (example in Croatian):
+
+```
+You will be given a task. The task definition is in English, but the task itself is in another language. Answer only with "1" or "2". Here are some examples of the task:
+Example 1:
+Premise: "Čovek odvrnuja slavinu."
+Question: "effect"
+Hypothesis 1: "Ve-ce se napunija sas vodu."
+Hypothesis 2: "Voda ističala od slavinu."
+Answer: "2"
+
+Example 2:
+Premise: "Devojčica našla bubaljku među njojne žitarice."
+Question: "effect"
+Hypothesis 1: "Sipala mleko u činiju."
+Hypothesis 2: "Izgubila si apetit."
+Answer: "2"
+
+Example 3:
+Premise: "Žena otišla u penziju."
+Question: "effect"
+Hypothesis 1: "Primila si penziju."
+Hypothesis 2: "Otplatila si hipoteku."
+Answer: "1"
+
+Example 4:
+Premise: "Teja sam si ušparam struju."
+Question: "effect"
+Hypothesis 1: "Pomeja sam patos u praznu sobu."
+Hypothesis 2: "Ugasija sam svetlo u praznu sobu."
+Answer: "2"
+
+Now to your task!
+Premise: "Devojka zamislila želju."
+Question: "cause"
+Hypothesis 1: "Videla crnu mačku."
+Hypothesis 2: "Videla zvezdu padalicu."
+Answer: 
+```
+
+| system | copa-en.fewshot.train | copa-hr.fewshot.train | copa-mk.fewshot.train | copa-mk.fewshot.train.trans | copa-sl-cer.fewshot.train | copa-sl.fewshot.train | copa-sr-tor.fewshot.train | copa-sr-tor.fewshot.train.trans | copa-sr.fewshot.train | copa-sr.fewshot.train.trans |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| mistral/Mistral-7B-Instruct-v0.1 | 0.745 | 0.593 | 0.578 | 0.56 | 0.527 | 0.598 | 0.565 | 0.542 | 0.603 | 0.595 |
+| mistral/Mistral-7B-Instruct-v0.2 | 0.938 | 0.718 | 0.688 | 0.647 | 0.515 | 0.738 | 0.65 | 0.63 | 0.738 | 0.743 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 0.927 | 0.797 | 0.705 | 0.718 | 0.487 | 0.777 | 0.713 | 0.73 | 0.807 | 0.785 |
+
+
