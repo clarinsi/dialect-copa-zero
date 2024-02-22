@@ -15,10 +15,11 @@ Answer:
 
 | system | avg | copa-en.train | copa-hr.train | copa-mk.train | copa-mk.train.trans | copa-sl-cer.train | copa-sl.train | copa-sr-tor.train | copa-sr-tor.train.trans | copa-sr.train | copa-sr.train.trans |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| bigscience/mt0-xxl | | 0.89 | 0.738 | 0.838 | 0.782 | 0.54 | 0.787 | 0.78 | 0.713 | 0.828 | 0.765 |
-| CohereForAI/aya-101 | | 0.808 | 0.645 | 0.72 | 0.63 | 0.53 | 0.728 | 0.69 | 0.623 | 0.745 | 0.665 |
-| gpt-3.5-turbo-0125 | | 0.923 | 0.843 | 0.733 | 0.713 | 0.535 | 0.79 | 0.715 | 0.772 | 0.795 | 0.825 |
-| gpt-4-0125-preview | | 0.988 | 0.963 | 0.945 | 0.9 | 0.608 | 0.96 | 0.92 | 0.912 | 0.955 | 0.96 |
+| bigscience/mt0-xxl | 0.766 | 0.89 | 0.738 | 0.838 | 0.782 | 0.54 | 0.787 | 0.78 | 0.713 | 0.828 | 0.765 |
+| CohereForAI/aya-101 | 0.678 | 0.808 | 0.645 | 0.72 | 0.63 | 0.53 | 0.728 | 0.69 | 0.623 | 0.745 | 0.665 |
+| google/gemma-7b-it | 0.599 | 0.797 | 0.57 | 0.605 | 0.54 | 0.522 | 0.593 | 0.57 | 0.552 | 0.627 | 0.618 |
+| gpt-3.5-turbo-0125 | 0.756 | 0.922 | 0.82 | 0.745 | 0.67 | 0.547 | 0.802 | 0.693 | 0.745 | 0.787 | 0.83 |
+| gpt-4-0125-preview | 0.912 | 0.988 | 0.96 | 0.943 | 0.92 | 0.595 | 0.96 | 0.9 | 0.925 | 0.965 | 0.968 |
 | meta-llama/Llama-2-7b-chat-hf | | 0.533 | 0.152 | 0.035 | 0.033 | 0.02 | 0.175 | 0.043 | 0.09 | 0.095 | 0.145 |
 | mistral/Mistral-7B-Instruct-v0.1 | 0.52 | 0.652 | 0.507 | 0.502 | 0.497 | 0.487 | 0.507 | 0.502 | 0.5 | 0.525 | 0.515 |
 | mistral/Mistral-7B-Instruct-v0.2 | 0.508 | 0.723 | 0.542 | 0.497 | 0.448 | 0.285 | 0.515 | 0.507 | 0.487 | 0.542 | 0.537 |
@@ -43,10 +44,10 @@ Lack of clear response by model and dataset is the following.
 
 ## Few-shot
 
-Results on the train section of the data, on models where improvement is observed when 4-shotting with the following prompt (example in Croatian):
+Results on the train section of the data, on models where improvement is observed when 4-shotting with the following prompt (example in Torlak):
 
 ```
-You will be given a task. The task definition is in English, but the task itself is in another language. Answer only with "1" or "2". Here are some examples of the task:
+You will be given a task. The task definition is in English, but the task itself is in another language.  You are to choose the more likely hypothesis given a premise. Take into account that we are either looking for a cause or an effect of the premise. Answer only with "1" or "2". Here are some examples of the task:
 Example 1:
 Premise: "Čovek odvrnuja slavinu."
 Question: "effect"
@@ -85,8 +86,14 @@ Answer:
 
 | system | N-shot | avg |  copa-en.train | copa-hr.train | copa-mk.train | copa-mk.train.trans | copa-sl-cer.train | copa-sl.train | copa-sr-tor.train | copa-sr-tor.train.trans | copa-sr.train | copa-sr.train.trans |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-3.5-turbo-0125 | 0 | 0.756 | 0.922 | 0.82 | 0.745 | 0.67 | 0.547 | 0.802 | 0.693 | 0.745 | 0.787 | 0.83 |
+| gpt-3.5-turbo-0125 | 10 | 0.793 | 0.935 | 0.84 | 0.77 | 0.77 | 0.53 | 0.845 | 0.772 | 0.802 | 0.805 | 0.858 |
+| gpt-4-0125-preview | 0 | 0.912 | 0.988 | 0.963 | 0.945 | 0.9 | 0.608 | 0.96 | 0.92 | 0.912 | 0.955 | 0.96 |
+| gpt-4-0125-preview | 10 | 0.956 | 0.995 | 0.988 | 0.978 | 0.965 | 0.738 | 0.98 | 0.97 | 0.968 | 0.99 | 0.99 |
 | mistral/Mistral-7B-Instruct-v0.1 | 0 | 0.52 | 0.652 | 0.507 | 0.502 | 0.497 | 0.487 | 0.507 | 0.502 | 0.5 | 0.525 | 0.515 |
 | mistral/Mistral-7B-Instruct-v0.1 | 4 | 0.59 | 0.745 | 0.593 | 0.578 | 0.56 | 0.527 | 0.598 | 0.565 | 0.542 | 0.603 | 0.595 |
+| mistral/Mistral-7B-Instruct-v0.1 | 10 | 0.643 | 0.82 | 0.657 | 0.603 | 0.603 | 0.54 | 0.675 | 0.603 | 0.59 | 0.693 | 0.647 |
+| mistral/Mistral-7B-Instruct-v0.1 | 20 | 0.623 | 0.838 | 0.66 | 0.603 | 0.588 | 0.492 | 0.637 | 0.58 | 0.575 | 0.625 | 0.63 |
 | mistral/Mistral-7B-Instruct-v0.2 | 0 | 0.508 | 0.723 | 0.542 | 0.497 | 0.448 | 0.285 | 0.515 | 0.507 | 0.487 | 0.542 | 0.537 |
 | mistral/Mistral-7B-Instruct-v0.2 | 4 | 0.7 | 0.938 | 0.718 | 0.688 | 0.647 | 0.515 | 0.738 | 0.65 | 0.63 | 0.738 | 0.743 |
 | mistral/Mistral-7B-Instruct-v0.2 | 10 | 0.708 | 0.925 | 0.757 | 0.708 | 0.665 | 0.507 | 0.718 | 0.667 | 0.632 | 0.75 | 0.752 |
