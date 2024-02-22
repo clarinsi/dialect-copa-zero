@@ -85,7 +85,9 @@ Answer:
 
 | system | N-shot | avg |  copa-en.train | copa-hr.train | copa-mk.train | copa-mk.train.trans | copa-sl-cer.train | copa-sl.train | copa-sr-tor.train | copa-sr-tor.train.trans | copa-sr.train | copa-sr.train.trans |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| mistral/Mistral-7B-Instruct-v0.1 | 0 | 0.52 | 0.652 | 0.507 | 0.502 | 0.497 | 0.487 | 0.507 | 0.502 | 0.5 | 0.525 | 0.515 |
 | mistral/Mistral-7B-Instruct-v0.1 | 4 | 0.59 | 0.745 | 0.593 | 0.578 | 0.56 | 0.527 | 0.598 | 0.565 | 0.542 | 0.603 | 0.595 |
+| mistral/Mistral-7B-Instruct-v0.2 | 0 | 0.508 | 0.723 | 0.542 | 0.497 | 0.448 | 0.285 | 0.515 | 0.507 | 0.487 | 0.542 | 0.537 |
 | mistral/Mistral-7B-Instruct-v0.2 | 4 | 0.7 | 0.938 | 0.718 | 0.688 | 0.647 | 0.515 | 0.738 | 0.65 | 0.63 | 0.738 | 0.743 |
 | mistral/Mixtral-8x7B-Instruct-v0.1 | 0 | 0.67 | 0.875 | 0.705 | 0.665 | 0.632 | 0.405 | 0.682 | 0.68 | 0.637 | 0.71 | 0.713 |
 | mistral/Mixtral-8x7B-Instruct-v0.1 | 4 | 0.745 | 0.927 | 0.797 | 0.705 | 0.718 | 0.487 | 0.777 | 0.713 | 0.73 | 0.807 | 0.785 |
