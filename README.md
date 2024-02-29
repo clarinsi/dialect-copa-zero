@@ -89,6 +89,7 @@ Answer:
 | gpt-3.5-turbo-0125 | 0 | 0.756 | 0.922 | 0.82 | 0.745 | 0.67 | 0.547 | 0.802 | 0.693 | 0.745 | 0.787 | 0.83 |
 | gpt-3.5-turbo-0125 | 10 | 0.793 | 0.935 | 0.84 | 0.77 | 0.77 | 0.53 | 0.845 | 0.772 | 0.802 | 0.805 | 0.858 |
 | gpt-4-0125-preview | 0 | 0.912 | 0.988 | 0.963 | 0.945 | 0.9 | 0.608 | 0.96 | 0.92 | 0.912 | 0.955 | 0.96 |
+
 | gpt-4-0125-preview | 10 | 0.956 | 0.995 | 0.988 | 0.978 | 0.965 | 0.738 | 0.98 | 0.97 | 0.968 | 0.99 | 0.99 |
 | mistral/Mistral-7B-Instruct-v0.1 | 0 | 0.52 | 0.652 | 0.507 | 0.502 | 0.497 | 0.487 | 0.507 | 0.502 | 0.5 | 0.525 | 0.515 |
 | mistral/Mistral-7B-Instruct-v0.1 | 4 | 0.59 | 0.745 | 0.593 | 0.578 | 0.56 | 0.527 | 0.598 | 0.565 | 0.542 | 0.603 | 0.595 |
@@ -103,3 +104,22 @@ Answer:
 | mistral/Mixtral-8x7B-Instruct-v0.1 | 10 | 0.755 | 0.932 | 0.818 | 0.703 | 0.682 | 0.5 | 0.802 | 0.723 | 0.748 | 0.848 | 0.795 |
 | mistral/Mixtral-8x7B-Instruct-v0.1 | 20 | 0.76 | 0.95 | 0.805 | 0.735 | 0.693 | 0.555 | 0.792 | 0.713 | 0.713 | 0.845 | 0.802 |
 
+We also investigate a few variants of the few-shot prompting, for now only on Mixtral, namely:
+
+- en - giving shots in English, thereby measuring the importance of  examples in the  target language
+- blank - giving shots without the response, thereby measuring how important the correct answer is
+- list - giving shots as lists of sentences, to inform the model on the language, but not on the task
+
+| system | N-shot | variant | avg |  copa-en.train | copa-hr.train | copa-mk.train | copa-mk.train.trans | copa-sl-cer.train | copa-sl.train | copa-sr-tor.train | copa-sr-tor.train.trans | copa-sr.train | copa-sr.train.trans |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 0 | original | 0.67 | 0.875 | 0.705 | 0.665 | 0.632 | 0.405 | 0.682 | 0.68 | 0.637 | 0.71 | 0.713 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 4 | original | 0.745 | 0.927 | 0.797 | 0.705 | 0.718 | 0.487 | 0.777 | 0.713 | 0.73 | 0.807 | 0.785 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 10 | original | 0.755 | 0.932 | 0.818 | 0.703 | 0.682 | 0.5 | 0.802 | 0.723 | 0.748 | 0.848 | 0.795 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 20 | original | 0.76 | 0.95 | 0.805 | 0.735 | 0.693 | 0.555 | 0.792 | 0.713 | 0.713 | 0.845 | 0.802 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 4 | en | 0.667 | 0.927 | 0.638 | 0.693 | 0.635 | 0.58 | 0.412 | 0.645 | 0.67 | 0.637 | 0.745 | 0.723 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 10 | en | 0.692 | 0.935 | 0.735 | 0.65 | 0.608 | 0.445 | 0.69 | 0.705 | 0.645 | 0.787 |  0.72 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 4 | blank | 0.758 | 0.915 | 0.823 | 0.713 | 0.738 | 0.507 | 0.757 | 0.75 | 0.743 | 0.84 | 0.795 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 10 | blank | 0.758 | 0.927 | 0.805 | 0.72 | 0.685 | 0.492 | 0.818 | 0.765 | 0.745 | 0.823 | 0.802 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 20 | blank | 0.763 | 0.943 | 0.81 | 0.697 | 0.7 | 0.5 | 0.8 | 0.772 | 0.74 | 0.838 | 0.833 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 4 | list | 0.713 | 0.912 | 0.76 | 0.685 | 0.655 | 0.487 | 0.725 | 0.708 | 0.69 | 0.757 | 0.752 |
+| mistral/Mixtral-8x7B-Instruct-v0.1 | 10 | list | 0.724 | 0.907 | 0.775 | 0.708 | 0.657 | 0.515 | 0.74 | 0.7 | 0.698 | 0.787 | 0.757 |
